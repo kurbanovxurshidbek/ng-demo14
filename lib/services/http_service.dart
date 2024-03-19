@@ -14,6 +14,7 @@ class Network {
   static bool isTester = true;
   static String SERVER_DEV = "api.thecatapi.com";
   static String SERVER_PROD = "api.thecatapi.com";
+  static String API_KEY = "live_25MQkrVdHQyw0AcUzRc7yxgCV3hG5Wvt0XcYPPFlJHEj7a8zS6YfEed4jkO6p6cB";
 
   static String getServer() {
     if (isTester) return SERVER_DEV;
@@ -22,8 +23,7 @@ class Network {
 
   static Map<String, String> headers = {
     'Content-Type': 'application/json; charset=UTF-8',
-    'x-api-key':
-        'live_25MQkrVdHQyw0AcUzRc7yxgCV3hG5Wvt0XcYPPFlJHEj7a8zS6YfEed4jkO6p6cB'
+    'x-api-key': API_KEY
   };
 
   /* Http Requests */
@@ -67,8 +67,7 @@ class Network {
       String api, File file, Map<String, String> params) async {
     var uri = Uri.https(getServer(), api); // http or https
     var request = MultipartRequest('POST', uri);
-    request.headers['x-api-key'] =
-        'live_25MQkrVdHQyw0AcUzRc7yxgCV3hG5Wvt0XcYPPFlJHEj7a8zS6YfEed4jkO6p6cB';
+    request.headers['x-api-key'] = API_KEY;
     request.headers['Content-Type'] = 'multipart/form-data';
     String filename = file.path.split("/").last;
     LogService.i(filename);
