@@ -25,12 +25,16 @@ class _HomePageState extends State<HomePage> {
   }
 
   _apiCatList() async{
-    var response = await Network.GET(Network.API_CAT_LIST, Network.paramsCatList());
-    setState(() {
-      catList =  Network.parseCatList(response!);
-      isLoading = false;
-    });
-    LogService.d(catList!.length.toString());
+    try {
+      var response = await Network.GET(Network.API_CAT_LIST, Network.paramsCatList());
+      setState(() {
+        catList =  Network.parseCatList(response!);
+        isLoading = false;
+      });
+      LogService.d(catList!.length.toString());
+    } catch (e) {
+      LogService.e(e.toString());
+    }
   }
 
   Future<void> _handleRefresh() async {
@@ -40,7 +44,7 @@ class _HomePageState extends State<HomePage> {
   Future _callUploadPage() async {
     bool result = await Navigator.of(context)
         .push(MaterialPageRoute(builder: (BuildContext context) {
-      return UploadPage();
+      return const UploadPage();
     }));
 
     if (result) {

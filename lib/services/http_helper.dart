@@ -8,6 +8,8 @@ import 'log.service.dart';
 
 
 class HttpInterceptor implements InterceptorContract {
+  static String API_KEY = "live_25MQkrVdHQyw0AcUzRc7yxgCV3hG5Wvt0XcYPPFlJHEj7a8zS6YfEed4jkO6p6cB";
+
   // We need to intercept request
   @override
   Future<RequestData> interceptRequest({required RequestData data}) async {
@@ -16,7 +18,7 @@ class HttpInterceptor implements InterceptorContract {
       var accessToken = "";
       // Clear previous header and update it with updated token
       data.headers.clear();
-      data.headers['x-api-key'] = 'live_25MQkrVdHQyw0AcUzRc7yxgCV3hG5Wvt0XcYPPFlJHEj7a8zS6YfEed4jkO6p6cB';
+      data.headers['x-api-key'] = API_KEY;
       data.headers['Content-type'] = 'application/json';
       LogService.i(data.toString());
     } catch (e) {
