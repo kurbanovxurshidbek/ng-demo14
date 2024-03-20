@@ -57,7 +57,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
-        title: Text("Cat List"),
+        title: Text("Cat List", style: TextStyle(fontSize: 30),),
       ),
       body: Stack(
         children: [
